@@ -2,11 +2,21 @@ package tetris;
 
 public class Manager {
 	
+	Board board = new Board();
+	BoardGenerator generator = new BoardGenerator();
+	BoardPrinter printer = new BoardPrinter();
+	PieceMovement movement = new PieceMovement();
+	
 	public void startGame(){
-		Board board = new Board();
-		board.createBoard();
+		generator.createBoard(board);
 		board.putPieceOnBoard();
-		board.printBoard();
+		while(true){
+			movement.moveDown(board);
+			printer.printBoard(board);
+			System.out.println();
+		}
+//		movement.moveLeft(board);
+//		movement.moveRight(board);
 	}
 
 }

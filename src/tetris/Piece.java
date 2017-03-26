@@ -4,12 +4,21 @@ public class Piece {
 	
 	private int currX;
 	private int currY;
-	private String color;
+	private boolean isPieceStill = false;
 	
-	public Piece(int currX, int currY, String color) {
+	public Piece(int currX, int currY) {
 		this.currX = currX;
 		this.currY = currY;
-		this.color = color;
+	}	
+
+	
+	
+	public boolean isPieceStill() {
+		return isPieceStill;
+	}
+
+	public void setPieceStill(boolean isPieceStill) {
+		this.isPieceStill = isPieceStill;
 	}
 
 	public void setCurrX(int currX) {
@@ -20,12 +29,12 @@ public class Piece {
 		this.currY = currY;
 	}
 
-	public int getCurrX() {
-		return currX;
-	}
-
 	public int getCurrY() {
 		return currY;
+	}
+
+	public int getCurrX() {
+		return currX;
 	}
 	
 	
