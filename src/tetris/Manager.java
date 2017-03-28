@@ -6,13 +6,21 @@ public class Manager {
 	BoardGenerator generator = new BoardGenerator();
 	BoardPrinter printer = new BoardPrinter();
 	PieceMovement movement = new PieceMovement();
+	ElementT elementT = new ElementT();
+	ElementI elementI = new ElementI();
+	ElementL elementL = new ElementL();
+	ElementJ elementJ = new ElementJ();
+	ElementO elementO = new ElementO();
+	ElementS elementS = new ElementS();
+	ElementZ elementZ = new ElementZ();
 	
 	public void startGame(){
 		generator.createBoard(board);
-		board.putPieceOnBoard();
+		elementL.configure(board);
+		//board.putPieceOnBoard();
 		while(true){
-			movement.moveDown(board);
 			printer.printBoard(board);
+			movement.moveDown(board);
 			System.out.println();
 		}
 //		movement.moveLeft(board);
