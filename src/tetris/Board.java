@@ -6,8 +6,8 @@ public class Board {
 	// 2nd class - moves them
 	// 3rd class - prints
 
-	private static final int BOARD_WIDTH = 10;
-	private static final int BOARD_HEIGHT = 18;
+	private static final int BOARD_WIDTH = 5;
+	private static final int BOARD_HEIGHT = 6;
 	private static Piece[][] board;
 
 	public static int getBoardWidth() {
@@ -19,9 +19,9 @@ public class Board {
 	}
 	
 	public void putPieceOnBoard() {
-		int pieceCurrX = 4;
+		int pieceCurrX = 2;
 		int pieceCurrY = 0;
-		Piece piece = new Piece(pieceCurrX, pieceCurrY);
+		Piece piece = new Piece(false);
 		board[pieceCurrX][pieceCurrY] = piece;
 	}
 
@@ -30,9 +30,18 @@ public class Board {
 	}
 
 	public void setPieceAt(int x, int y, Piece piece) {
+		if(isOnBoard(x, y)){
 		board[x][y] = piece;
+		}
 	}
 	
+	private boolean isOnBoard(int x, int y) {
+		if(x >= 0 && y >= 0 && x < BOARD_WIDTH && y < BOARD_HEIGHT){
+		return true;
+		}
+		return false;
+	}
+
 	public Piece getPieceAt(int x, int y) {
 		return board[x][y];
 	}
