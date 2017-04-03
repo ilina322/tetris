@@ -8,13 +8,23 @@ public class Manager {
 	PieceMovement movement = new PieceMovement();
 
 	public void startGame() {
+
+		ElementT elementT = new ElementT();
+		ElementI elementI = new ElementI();
+		ElementL elementL = new ElementL();
+		ElementJ elementJ = new ElementJ();
+		ElementO elementO = new ElementO();
+		ElementS elementS = new ElementS();
+		ElementZ elementZ = new ElementZ();
+
 		generator.createBoard(board);
-		board.putPieceOnBoard();
-		while(true){
-		printer.printBoard(board);
-		movement.moveDown(board);
-		System.out.println();
+		elementL.configure(board);
+		// board.putPieceOnBoard();
+		while (true) {
+			printer.printBoard(board);
+			movement.moveDown(board);
+			System.out.println();
+
 		}
 	}
-
 }

@@ -2,12 +2,22 @@ package tetris;
 
 public class Board {
 
+	ElementT elementT = new ElementT();
+	ElementI elementI = new ElementI();
+	ElementL elementL = new ElementL();
+	ElementJ elementJ = new ElementJ();
+	ElementO elementO = new ElementO();
+	ElementS elementS = new ElementS();
+	ElementZ elementZ = new ElementZ();
+	
 	// 1st class - puts elements
 	// 2nd class - moves them
 	// 3rd class - prints
 
-	private static final int BOARD_WIDTH = 5;
-	private static final int BOARD_HEIGHT = 6;
+
+	private static final int BOARD_WIDTH = 9;
+	private static final int BOARD_HEIGHT = 12;
+
 	private static Piece[][] board;
 
 	public static int getBoardWidth() {
@@ -23,6 +33,7 @@ public class Board {
 		int pieceCurrY = 0;
 		Piece piece = new Piece(false);
 		board[pieceCurrX][pieceCurrY] = piece;
+
 	}
 
 	public Board() { // default constructor
