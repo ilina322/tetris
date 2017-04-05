@@ -6,12 +6,11 @@ public class PieceMovement {
 		for (int x = 0; x < board.length(); x++) {
 			for (int y = board.rowLength() - 1; y >= 0; y--) {
 				Piece piece = board.getPieceAt(x, y);
-				stopPiece(x, y, board);	
+				stopPiece(x, y, board);
 				if (piece instanceof Piece && !piece.isPieceStill()) {
 					board.setPieceAt(x, y, null);
 					board.setPieceAt(x, y + 1, piece);
 				}
-				
 			}
 		}
 		return board;
@@ -19,7 +18,7 @@ public class PieceMovement {
 
 	public Board moveLeft(Board board) {
 		for (int x = 0; x < board.length(); x++) {
-			for (int y = 0; y < board.rowLength(); y++) {
+			for (int y = board.rowLength() - 1; y >= 0; y--) {
 				Piece piece = board.getPieceAt(x, y);
 				if (piece instanceof Piece && !piece.isPieceStill()) {
 					board.setPieceAt(x - 1, y, piece);
@@ -33,13 +32,12 @@ public class PieceMovement {
 	public Board moveRight(Board board) {
 
 		for (int x = 0; x < board.length(); x++) {
-			for (int y = 0; y < board.rowLength(); y++) {
+			for (int y = board.rowLength() - 1; y >= 0; y--) {
 				Piece piece = board.getPieceAt(x, y);
 				if (piece instanceof Piece && !piece.isPieceStill()) {
 					board.setPieceAt(x + 1, y, piece);
-					board.setPieceAt(x, y, null);
+					board.setPieceAt(x-1, y, null);
 				}
-
 			}
 		}
 		return board;
@@ -62,21 +60,20 @@ public class PieceMovement {
 		}
 		return false;
 	}
-	
-	private void stopPiece(int x, int y, Board board){
-		if(isPieceBelowStill(x, y, board) || isPieceAboveAtTheBoardEnd(x, y, board)){
-		board.getPieceAt(x, y).setPieceStill(true);
+
+	private void stopPiece(int x, int y, Board board) {
+		if (isPieceBelowStill(x, y, board) || isPieceAboveAtTheBoardEnd(x, y, board)) {
+			board.getPieceAt(x, y).setPieceStill(true);
 		}
 	}
 
-	
-//	private void stopAllMovingPieces(Board board) {
-//		for (int x = 0; x < board.length(); x++) {
-//			for (int y = 0; y < board.rowLength(); y++) {
-//				if(board.getPieceAt(x, y) instanceof Piece){
-//					board.getPieceAt(x, y).setPieceStill(true);
-//				}
-//			}
-//		}
-//	}
+	// private void stopAllMovingPieces(Board board) {
+	// for (int x = 0; x < board.length(); x++) {
+	// for (int y = 0; y < board.rowLength(); y++) {
+	// if(board.getPieceAt(x, y) instanceof Piece){
+	// board.getPieceAt(x, y).setPieceStill(true);
+	// }
+	// }
+	// }
+	// }
 }

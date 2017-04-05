@@ -2,6 +2,7 @@ package tetris;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class ElementMovement {
 
@@ -16,15 +17,49 @@ public abstract class ElementMovement {
 	public abstract void rotate();
 
 	public void createElement(Board board, int x, int y) {
-		pieceList.removeAll(pieceList);
+		//pieceList.removeAll(pieceList);
 		Piece piece = new Piece();
 		//piece.setPieceStill(false);
 		board.setPieceAt(x, y, piece);
 		pieceList.add(piece);
 	}
 	
+	public ElementMovement generateElement() {
+
+		Random rand = new Random();
+		int type = rand.nextInt(7);
+		List<ElementMovement> elementArray = new ArrayList<>();
+
+		elementArray.add(new ElementT());
+		elementArray.add(new ElementI());
+		elementArray.add(new ElementL());
+		elementArray.add(new ElementJ());
+		elementArray.add(new ElementO());
+		elementArray.add(new ElementS());
+		elementArray.add(new ElementZ());
+
+		return elementArray.get(type);
+
+	}
+	
+	public void stopElement(){
+		for (Piece piece : pieceList) {
+			if (piece.isPieceStill()) {
+				stopAllPieces();
+				break;
+			}
+		}
+	}
 	
 	
+	
+	private void stopAllPieces() {
+		for (Piece piece : pieceList) {
+			piece.setPieceStill(true);
+		}
+		
+	}
+
 	public boolean isMoving() {
 		for (Piece piece : pieceList) {
 			if (piece.isPieceStill()) {
