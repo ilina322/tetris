@@ -2,21 +2,14 @@ package tetris;
 
 public class Board {
 
-	ElementT elementT = new ElementT();
-	ElementI elementI = new ElementI();
-	ElementL elementL = new ElementL();
-	ElementJ elementJ = new ElementJ();
-	ElementO elementO = new ElementO();
-	ElementS elementS = new ElementS();
-	ElementZ elementZ = new ElementZ();
 	
 	// 1st class - puts elements
 	// 2nd class - moves them
 	// 3rd class - prints
 
 
-	private static final int BOARD_WIDTH = 9;
-	private static final int BOARD_HEIGHT = 12;
+	private static final int BOARD_WIDTH = 6;
+	private static final int BOARD_HEIGHT = 10;
 
 	private static Piece[][] board;
 
@@ -29,8 +22,8 @@ public class Board {
 	}
 	
 	public void putPieceOnBoard() {
-		int pieceCurrX = 2;
-		int pieceCurrY = 0;
+		int pieceCurrX = 4;
+		int pieceCurrY = 5;
 		Piece piece = new Piece(false);
 		board[pieceCurrX][pieceCurrY] = piece;
 
@@ -46,13 +39,13 @@ public class Board {
 		}
 	}
 	
-	private boolean isOnBoard(int x, int y) {
+	public boolean isOnBoard(int x, int y) {
 		if(x >= 0 && y >= 0 && x < BOARD_WIDTH && y < BOARD_HEIGHT){
 		return true;
 		}
 		return false;
 	}
-
+	
 	public Piece getPieceAt(int x, int y) {
 		return board[x][y];
 	}

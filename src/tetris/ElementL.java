@@ -1,22 +1,16 @@
 package tetris;
 
-public class ElementL implements ElementMovement{
+import java.util.ArrayList;
+import java.util.List;
 
-	Piece piece1 = new Piece();
-	Piece piece2 = new Piece();
-	Piece piece3 = new Piece();
-	Piece piece4 = new Piece();
-	
-	
-	
+public class ElementL extends ElementMovement{
+
 	@Override
 	public void configure(Board board) {
-		board.setPieceAt(4, 0, piece1);
-		board.setPieceAt(4, 1, piece1);
-		board.setPieceAt(4, 2, piece1);
-		board.setPieceAt(5, 2, piece1);
-		
-		
+		createElement(board, 4, 0);
+		createElement(board, 4, 1);
+		createElement(board, 4, 2);
+		createElement(board, 5, 2);
 	}
 
 	@Override
@@ -24,4 +18,5 @@ public class ElementL implements ElementMovement{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

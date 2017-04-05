@@ -20,7 +20,7 @@ import java.awt.Insets;
 public class JFrameScreen extends JFrame implements BoardScreen{
 
 	private JPanel contentPane;
-	private JButton[][] buttons = new JButton[5][6];
+	private JButton[][] buttons = new JButton[Board.getBoardWidth()][Board.getBoardHeight()];
 
 	/**
 	 * Create the frame.
@@ -39,18 +39,35 @@ public class JFrameScreen extends JFrame implements BoardScreen{
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 6; j++) {
-				JButton btnNewButton_1 = new JButton("New button");
-				GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-				gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton_1.gridx = i;
-				gbc_btnNewButton_1.gridy = j;
-				contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
-				buttons[i][j] = btnNewButton_1;
-			}
-		}
+		createButton(0, 0);
+		createButton(1, 0);
+		createButton(2, 0);
+		createButton(3, 0);
+		createButton(4, 0);
+		createButton(0, 1);
+		createButton(1, 1);
+		createButton(2, 1);
+		createButton(3, 1);
+		createButton(4, 1);
+		createButton(0, 2);
+		createButton(1, 2);
+		createButton(2, 2);
+		createButton(3, 2);
+		createButton(4, 2);
 	}
+	
+	public JButton createButton(int x, int y){
+		JButton btnNewButton = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridx = x; 
+		gbc_btnNewButton.gridy = y; 
+		contentPane.add(btnNewButton, gbc_btnNewButton);
+		buttons[x][y] = btnNewButton;
+		
+		return btnNewButton;
+	}
+	
+
 
 	@Override
 	public void showBoard(Board board) {

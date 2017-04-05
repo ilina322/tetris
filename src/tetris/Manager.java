@@ -1,5 +1,9 @@
 package tetris;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Manager {
 
 	Board board = new Board();
@@ -7,24 +11,37 @@ public class Manager {
 	UiController printer = new UiController();
 	PieceMovement movement = new PieceMovement();
 
+	
+	public ElementMovement generateElement() {
+
+		Random rand = new Random();
+		int type = rand.nextInt(7);
+		List<ElementMovement> elementArray = new ArrayList<>();
+
+		elementArray.add(new ElementT());
+		elementArray.add(new ElementI());
+		elementArray.add(new ElementL());
+		elementArray.add(new ElementJ());
+		elementArray.add(new ElementO());
+		elementArray.add(new ElementS());
+		elementArray.add(new ElementZ());
+
+		return elementArray.get(type);
+
+	}
+
 	public void startGame() {
 
-		ElementT elementT = new ElementT();
-		ElementI elementI = new ElementI();
-		ElementL elementL = new ElementL();
-		ElementJ elementJ = new ElementJ();
-		ElementO elementO = new ElementO();
-		ElementS elementS = new ElementS();
-		ElementZ elementZ = new ElementZ();
-
+		
 		generator.createBoard(board);
-		elementL.configure(board);
-		// board.putPieceOnBoard();
 		while (true) {
-			printer.printBoard(board);
-			movement.moveDown(board);
-			System.out.println();
-
+			ElementMovement element = generateElement();
+			element.configure(board);
+			while (element.isMoving()) {
+				movement.moveDown(board);
+				printer.printBoard(board);
+				System.out.println();
+			}
 		}
 	}
 }

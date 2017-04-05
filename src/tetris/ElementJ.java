@@ -1,6 +1,6 @@
 package tetris;
 
-public class ElementJ implements ElementMovement{
+public class ElementJ extends ElementMovement{
 
 	Piece piece1 = new Piece();
 	Piece piece2 = new Piece();
@@ -11,10 +11,10 @@ public class ElementJ implements ElementMovement{
 	
 	@Override
 	public void configure(Board board) {
-		board.setPieceAt(4, 0, piece1);
-		board.setPieceAt(4, 1, piece1);
-		board.setPieceAt(4, 2, piece1);
-		board.setPieceAt(3, 2, piece1);
+		createElement(board, 4, 0);
+		createElement(board, 4, 1);
+		createElement(board, 4, 2);
+		createElement(board, 3, 2);
 		
 		
 	}
@@ -24,4 +24,6 @@ public class ElementJ implements ElementMovement{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 }

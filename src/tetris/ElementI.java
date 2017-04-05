@@ -1,22 +1,15 @@
 package tetris;
 
-public class ElementI implements ElementMovement{
+public class ElementI extends ElementMovement{
 
-	Piece piece1 = new Piece();
-	Piece piece2 = new Piece();
-	Piece piece3 = new Piece();
-	Piece piece4 = new Piece();
-	
-	
+
 	
 	@Override
 	public void configure(Board board) {
-		board.setPieceAt(4, 0, piece1);
-		board.setPieceAt(4, 1, piece1);
-		board.setPieceAt(4, 2, piece1);
-		board.setPieceAt(4, 3, piece1);
-		
-		
+		createElement(board, 4, 0);
+		createElement(board, 4, 1);
+		createElement(board, 4, 2);
+		createElement(board, 4, 3);
 	}
 
 	@Override
