@@ -3,12 +3,7 @@ package tetris;
 public class Board {
 
 	
-	// 1st class - puts elements
-	// 2nd class - moves them
-	// 3rd class - prints
-
-
-	private static final int BOARD_WIDTH = 6;
+	private static final int BOARD_WIDTH = 10;
 	private static final int BOARD_HEIGHT = 10;
 
 	private static Piece[][] board;

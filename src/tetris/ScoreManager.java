@@ -15,6 +15,7 @@ public class ScoreManager {
 			if (piecesOnRow == board.getBoardWidth()) {
 				score++;
 				deleteRow(board);
+				System.out.println("score: " + score);
 			}
 		}
 	}

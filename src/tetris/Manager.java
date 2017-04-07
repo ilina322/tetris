@@ -14,6 +14,7 @@ public class Manager {
 	PieceMovement movement = new PieceMovement();
 	ScoreManager score = new ScoreManager();
 	
+	
 
 	public ElementMovement generateElement() {
 
@@ -41,10 +42,10 @@ public class Manager {
 			ElementMovement element = generateElement();
 			element.configure(board);
 			while (element.isMoving()) {
-				movement.moveDown(board);
-				element.stopElement();
-				score.raiseScore(board);
 				printer.printBoard(board);
+				movement.moveDown(board);
+				score.raiseScore(board);
+				element.stopElement();
 				System.out.println();
 			}
 		}
@@ -58,8 +59,8 @@ public class Manager {
 				Scanner scanner = new Scanner(System.in);
 				while (isRunning) {
 					char command = scanner.nextLine().charAt(0);
-					handleKeyPressed(command);
 					changeDirection(command);
+					handleKeyPressed(command);
 				}
 				scanner.close();
 			}

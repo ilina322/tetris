@@ -7,5 +7,4 @@ public class Demo {
 		Manager manager = new Manager();
 		manager.runGame();
 	}
-
 }

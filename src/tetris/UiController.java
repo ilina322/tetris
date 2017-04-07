@@ -8,16 +8,16 @@ public class UiController {
 
 	private static final long DELAY_IN_MILLIS = 1000;
 
-	BoardScreen screen;
+	ConsoleScreen screen;
 	//JFrameScreen screen;
 	public UiController() {
-		screen = new ConsoleScreen();
+	    screen = new ConsoleScreen();
 		//screen = new JFrameScreen();
 	}
 
-	public void printBoard(Board board) {	
-		screen.showBoard(board);
+	public void printBoard(Board board) {
 		delay();
+		screen.showBoard(board);
 	}
 	
 	private static void delay() {

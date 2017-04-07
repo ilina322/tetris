@@ -2,7 +2,7 @@ package tetris;
 
 public class BoardPrinter {
 
-	private static final long DELAY_IN_MILLIS = 1000;
+	private static final long DELAY_IN_MILLIS = 500;
 
 	public void printBoard(Board board) {
 		for (int y = 0; y < Board.getBoardHeight(); y++) {

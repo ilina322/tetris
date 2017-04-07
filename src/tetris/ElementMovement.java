@@ -17,13 +17,11 @@ public abstract class ElementMovement {
 	public abstract void rotate();
 
 	public void createElement(Board board, int x, int y) {
-		//pieceList.removeAll(pieceList);
 		Piece piece = new Piece();
-		//piece.setPieceStill(false);
 		board.setPieceAt(x, y, piece);
 		pieceList.add(piece);
 	}
-	
+
 	public ElementMovement generateElement() {
 
 		Random rand = new Random();
@@ -42,22 +40,14 @@ public abstract class ElementMovement {
 
 	}
 	
-	public void stopElement(){
-		for (Piece piece : pieceList) {
-			if (piece.isPieceStill()) {
-				stopAllPieces();
-				break;
+
+	public void stopElement() {
+		if (!isMoving()) {
+			for (Piece piece : pieceList) {
+				piece.setPieceStill(true);
+				System.out.println("still");
 			}
 		}
-	}
-	
-	
-	
-	private void stopAllPieces() {
-		for (Piece piece : pieceList) {
-			piece.setPieceStill(true);
-		}
-		
 	}
 
 	public boolean isMoving() {
