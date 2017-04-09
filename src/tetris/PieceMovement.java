@@ -66,14 +66,4 @@ public class PieceMovement {
 			board.getPieceAt(x, y).setPieceStill(true);
 		}
 	}
-
-	// private void stopAllMovingPieces(Board board) {
-	// for (int x = 0; x < board.length(); x++) {
-	// for (int y = 0; y < board.rowLength(); y++) {
-	// if(board.getPieceAt(x, y) instanceof Piece){
-	// board.getPieceAt(x, y).setPieceStill(true);
-	// }
-	// }
-	// }
-	// }
 }

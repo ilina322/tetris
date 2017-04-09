@@ -5,16 +5,30 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import ui.JFrameScreen.OnUserAction;
+
 public class Manager {
 
 	private boolean isRunning = true;
 	Board board = new Board();
 	BoardGenerator generator = new BoardGenerator();
-	UiController printer = new UiController();
+	OnUserAction listener = new OnUserAction() {
+
+		@Override
+		public void onRightArrow() {
+			System.out.println("right arrow clicked");
+
+		}
+
+		@Override
+		public void onLeftArrow() {
+			System.out.println("left arrow clicked");
+
+		}
+	};
+	UiController printer = new UiController(listener);
 	PieceMovement movement = new PieceMovement();
 	ScoreManager score = new ScoreManager();
-	
-	
 
 	public ElementMovement generateElement() {
 
@@ -35,8 +49,7 @@ public class Manager {
 	}
 
 	public void runGame() {
-		setKeyboardListener();
-		
+
 		generator.createBoard(board);
 		while (true) {
 			ElementMovement element = generateElement();
@@ -50,41 +63,4 @@ public class Manager {
 			}
 		}
 	}
-	
-	public void setKeyboardListener() {
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				Scanner scanner = new Scanner(System.in);
-				while (isRunning) {
-					char command = scanner.nextLine().charAt(0);
-					changeDirection(command);
-					handleKeyPressed(command);
-				}
-				scanner.close();
-			}
-			
-			
-
-		}).start();
-	}
-	private void changeDirection(char command) {
-		switch (command) {
-		case 'a':
-			movement.moveLeft(board);
-			break;
-		case 'd':
-			movement.moveRight(board);
-			break;
-		case 's': System.out.println("Score: " + score.getScore());
-			
-		}
-
-	}
-	
-	private static void handleKeyPressed(char keyCode) {
-		System.out.println("Key pressed:" + keyCode);
-	}
-	
 }

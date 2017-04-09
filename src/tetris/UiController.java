@@ -3,16 +3,18 @@ package tetris;
 import ui.BoardScreen;
 import ui.ConsoleScreen;
 import ui.JFrameScreen;
+import ui.JFrameScreen.OnUserAction;
 
 public class UiController {
 
 	private static final long DELAY_IN_MILLIS = 1000;
+	//ConsoleScreen screen;
+	JFrameScreen screen;
 
-	ConsoleScreen screen;
-	//JFrameScreen screen;
-	public UiController() {
-	    screen = new ConsoleScreen();
-		//screen = new JFrameScreen();
+	
+	public UiController(OnUserAction listener) {	
+	    //screen = new ConsoleScreen();
+		screen = new JFrameScreen(listener);
 	}
 
 	public void printBoard(Board board) {
@@ -27,4 +29,5 @@ public class UiController {
 			e.printStackTrace();
 		}
 	}
+
 }

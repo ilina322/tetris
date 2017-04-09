@@ -1,13 +1,17 @@
 package tetris;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public abstract class ElementMovement {
+import javax.swing.Timer;
+
+public abstract class ElementMovement{
 
 	protected List<Piece> pieceList;
-
+	
 	public ElementMovement() {
 		this.pieceList = new ArrayList<Piece>();
 	}
@@ -39,7 +43,6 @@ public abstract class ElementMovement {
 		return elementArray.get(type);
 
 	}
-	
 
 	public void stopElement() {
 		if (!isMoving()) {
@@ -59,4 +62,6 @@ public abstract class ElementMovement {
 		return true;
 	}
 
+	
+	
 }
