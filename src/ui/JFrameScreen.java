@@ -24,7 +24,6 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 	private JPanel contentPane;
 	private JButton[][] buttons = new JButton[Board.getBoardWidth()][Board.getBoardHeight()];
 	private OnUserAction listener;
-	private KeyListener keyListener;
 
 	/**
 	 * Create the frame.
@@ -33,7 +32,7 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 	public JFrameScreen(OnUserAction listener) {
 		
 		this.listener = listener;
-		addKeyListener(keyListener);
+		addKeyListener(this);
 		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -17,12 +17,14 @@ public class Manager {
 		@Override
 		public void onRightArrow() {
 			System.out.println("right arrow clicked");
+			movement.moveRight(board);
 
 		}
 
 		@Override
 		public void onLeftArrow() {
 			System.out.println("left arrow clicked");
+			movement.moveLeft(board);
 
 		}
 	};

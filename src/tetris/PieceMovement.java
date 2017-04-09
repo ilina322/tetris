@@ -8,8 +8,8 @@ public class PieceMovement {
 				Piece piece = board.getPieceAt(x, y);
 				stopPiece(x, y, board);
 				if (piece instanceof Piece && !piece.isPieceStill()) {
-					board.setPieceAt(x, y, null);
 					board.setPieceAt(x, y + 1, piece);
+					board.setPieceAt(x, y, null);
 				}
 			}
 		}
@@ -31,12 +31,12 @@ public class PieceMovement {
 
 	public Board moveRight(Board board) {
 
-		for (int x = 0; x < board.length(); x++) {
+		for (int x = board.length() - 1; x >= 0 ; x--) {
 			for (int y = board.rowLength() - 1; y >= 0; y--) {
 				Piece piece = board.getPieceAt(x, y);
 				if (piece instanceof Piece && !piece.isPieceStill()) {
-					board.setPieceAt(x, y, piece);
-					board.setPieceAt(x - 1, y, null);
+					board.setPieceAt(x + 1, y, piece);
+					board.setPieceAt(x , y, null);
 				}
 			}
 		}
