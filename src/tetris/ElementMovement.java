@@ -45,11 +45,9 @@ public abstract class ElementMovement{
 	}
 
 	public void stopElement() {
-		if (!isMoving()) {
 			for (Piece piece : pieceList) {
-				piece.setPieceStill(true);
 				System.out.println("still");
-			}
+				piece.setPieceStill(true);
 		}
 	}
 

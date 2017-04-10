@@ -7,13 +7,11 @@ import ui.JFrameScreen.OnUserAction;
 
 public class UiController {
 
-	private static final long DELAY_IN_MILLIS = 1000;
-	//ConsoleScreen screen;
+	private static final long DELAY_IN_MILLIS = 400;
 	JFrameScreen screen;
 
 	
 	public UiController(OnUserAction listener) {	
-	    //screen = new ConsoleScreen();
 		screen = new JFrameScreen(listener);
 	}
 

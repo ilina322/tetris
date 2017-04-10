@@ -34,6 +34,7 @@ public class Manager {
 
 	public ElementMovement generateElement() {
 
+		//move to board
 		Random rand = new Random();
 		int type = rand.nextInt(7);
 		List<ElementMovement> elementArray = new ArrayList<>();
@@ -59,8 +60,10 @@ public class Manager {
 			while (element.isMoving()) {
 				printer.printBoard(board);
 				movement.moveDown(board);
+				if(movement.checkShouldStop(board)){
+					element.stopElement();
+				}
 				score.raiseScore(board);
-				element.stopElement();
 				System.out.println();
 			}
 		}
