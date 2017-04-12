@@ -47,7 +47,7 @@ public class Manager {
 		elementArray.add(new ElementS());
 		elementArray.add(new ElementZ());
 
-		return elementArray.get(type);
+		return elementArray.get(4);
 
 	}
 
@@ -64,7 +64,6 @@ public class Manager {
 					element.stopElement();
 				}
 				score.raiseScore(board);
-				System.out.println();
 			}
 		}
 	}

@@ -6,30 +6,25 @@ public class ScoreManager {
 	private int piecesOnRow = 0;
 
 	public void raiseScore(Board board) {
-		for (int x = 0; x < board.length(); x++) {
-			for (int y = board.rowLength() - 1; y >= 0; y--) {
-				if (board.getPieceAt(x, y) instanceof Piece) {
+		for (int y = board.length() - 1; y >= 0; y--) {
+			for (int x = board.rowLength() - 1; x >= 0; x--) {
+				Piece piece = board.getPieceAt(x, y);
+				if (piece instanceof Piece && piece.isPieceStill()) {
 					piecesOnRow++;
 				}
+				if (piecesOnRow == board.rowLength()) {
+					score++;
+					deleteRow(board, x, y);
+					System.out.println("score: " + score);
+				}
 			}
-			if (piecesOnRow == board.getBoardWidth()) {
-				score++;
-				deleteRow(board);
-				System.out.println("score: " + score);
-			}
+			piecesOnRow = 0;
 		}
 	}
 
-	private void deleteRow(Board board) {
-		for (int x = 1; x < board.length(); x++) {
-			for (int y = board.rowLength() - 1; y >= 0; y--) {
+	private void deleteRow(Board board, int x, int y) {
 				Piece piece = board.getPieceAt(x, y);
-				if (piece instanceof Piece && piece.isPieceStill()) {
-					board.setPieceAt(x, y, null);
-					board.setPieceAt(x, y + 1, piece);
-				}
-			}
-		}
+				board.setPieceAt(x, y, null);
 	}
 
 	public int getScore() {

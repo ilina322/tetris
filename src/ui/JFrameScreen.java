@@ -54,7 +54,6 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 		JButton btn = new JButton("");
 		buttons[x][y] = btn;
 		contentPane.add(btn);
-		System.out.println("button added");
 		
 	}
 	
@@ -66,7 +65,6 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 				JButton button = buttons[x][y];
 				Piece piece = board.getPieceAt(y, x);
 				button.setBackground(piece == null ? Color.WHITE : Color.ORANGE);
-				System.out.println("button colored");
 			}
 
 		}
