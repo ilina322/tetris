@@ -47,7 +47,7 @@ public class Manager {
 		elementArray.add(new ElementS());
 		elementArray.add(new ElementZ());
 
-		return elementArray.get(4);
+		return elementArray.get(type);
 
 	}
 
