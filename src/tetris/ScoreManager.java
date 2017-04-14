@@ -33,8 +33,20 @@ public class ScoreManager {
 			}
 		}
 	}
-
-	public int getScore() {
-		return score;
+	
+	public void quickenGame(){
+		if(score >= 20){
+			UiController.setDelayInMillis(200);
+			System.out.println("DelayInMillis = 200");
+		} else if(score >= 15){
+			UiController.setDelayInMillis(400);
+			System.out.println("DelayInMillis = 400");
+		} else if(score >= 10){
+			UiController.setDelayInMillis(600);
+			System.out.println("DelayInMillis = 600");
+		} else if(score >= 5){
+			UiController.setDelayInMillis(800);
+			System.out.println("DelayInMillis = 800");
+		}
 	}
 }

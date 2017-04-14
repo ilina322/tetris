@@ -7,7 +7,7 @@ import ui.JFrameScreen.OnUserAction;
 
 public class UiController {
 
-	private static final long DELAY_IN_MILLIS = 1000;
+	private static long delayInMillis = 1000;
 	JFrameScreen screen;
 
 	
@@ -22,10 +22,18 @@ public class UiController {
 	
 	private static void delay() {
 		try {
-			Thread.sleep(DELAY_IN_MILLIS);
+			Thread.sleep(delayInMillis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void setDelayInMillis(long delayInMillis) {
+		UiController.delayInMillis = delayInMillis;
+	}
+
+	public static long getDelayInMillis() {
+		return delayInMillis;
 	}
 
 }

@@ -9,53 +9,46 @@ import ui.JFrameScreen.OnUserAction;
 
 public class Manager {
 
-	private boolean isRunning = true;
-	Board board = new Board();
-	BoardGenerator generator = new BoardGenerator();
-	OnUserAction listener = new OnUserAction() {
+	private boolean isRunning;
+	private Board board;
+	private BoardGenerator generator;
+	private OnUserAction listener;
+	private UiController printer;
+	private PieceMovement movement;
+	private ScoreManager score;
 
-		@Override
-		public void onRightArrow() {
-			System.out.println("right arrow clicked");
-			movement.moveRight(board);
 
-		}
 
-		@Override
-		public void onLeftArrow() {
-			System.out.println("left arrow clicked");
-			movement.moveLeft(board);
+	public Manager() {
+		this.isRunning = true;
+		this.board = new Board();
+		this.generator = new BoardGenerator();
+		this.listener = new OnUserAction() {
 
-		}
-	};
-	UiController printer = new UiController(listener);
-	PieceMovement movement = new PieceMovement();
-	ScoreManager score = new ScoreManager();
+			@Override
+			public void onRightArrow() {
+				System.out.println("right arrow clicked");
+				movement.moveRight(board);
 
-	public ElementMovement generateElement() {
+			}
 
-		//move to board
-		Random rand = new Random();
-		int type = rand.nextInt(7);
-		List<ElementMovement> elementArray = new ArrayList<>();
+			@Override
+			public void onLeftArrow() {
+				System.out.println("left arrow clicked");
+				movement.moveLeft(board);
 
-		elementArray.add(new ElementT());
-		elementArray.add(new ElementI());
-		elementArray.add(new ElementL());
-		elementArray.add(new ElementJ());
-		elementArray.add(new ElementO());
-		elementArray.add(new ElementS());
-		elementArray.add(new ElementZ());
-
-		return elementArray.get(type);
-
+			}
+		};
+		this.printer = new UiController(listener);
+		this.movement = new PieceMovement();
+		this.score = new ScoreManager();
 	}
 
 	public void runGame() {
 
 		generator.createBoard(board);
-		while (true) {
-			ElementMovement element = generateElement();
+		while (isRunning) {
+			ElementMovement element = board.generateElement();
 			element.configure(board);
 			while (element.isMoving()) {
 				printer.printBoard(board);
@@ -64,7 +57,18 @@ public class Manager {
 					element.stopElement();
 				}
 				score.raiseScore(board);
+				score.quickenGame();
+				boolean flag1 = board.isBoardFull();
+				if(flag1){
+					endGame();
+				}
 			}
 		}
+	}
+	
+	
+	private void endGame(){
+		isRunning = false;
+		System.out.println("Game Over");
 	}
 }
