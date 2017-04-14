@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Board {
 
-	private static final int BOARD_WIDTH = 10;
-	private static final int BOARD_HEIGHT = 10;
+	private static final int BOARD_WIDTH = 20;
+	private static final int BOARD_HEIGHT = 20;
 
 	private static Piece[][] board;
 

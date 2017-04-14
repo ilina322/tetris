@@ -6,6 +6,7 @@ import java.awt.Button;
 import java.awt.Color;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -36,9 +37,9 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 674, 542);
+		setBounds(100, 100, 800, 591);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(7, 7, 7, 7));
 		setContentPane(contentPane);
 
 		contentPane.setLayout(new GridLayout(Board.getBoardWidth(), Board.getBoardHeight()));
@@ -56,7 +57,6 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 		contentPane.add(btn);
 		
 	}
-	
 
 	@Override
 	public void showBoard(Board board) {
@@ -101,5 +101,10 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void showPopupMessage(String message) {
+		JOptionPane.showMessageDialog(null, null, message, JOptionPane.ERROR_MESSAGE);
+		System.exit(0);	
 	}
 }

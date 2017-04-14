@@ -36,4 +36,9 @@ public class UiController {
 		return delayInMillis;
 	}
 
+	public void gameOver() {
+		screen.showPopupMessage("Game Over");
+		
+	}
+
 }

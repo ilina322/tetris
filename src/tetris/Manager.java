@@ -70,5 +70,6 @@ public class Manager {
 	private void endGame(){
 		isRunning = false;
 		System.out.println("Game Over");
+		printer.gameOver();
 	}
 }
