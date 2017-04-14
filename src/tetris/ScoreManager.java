@@ -15,28 +15,22 @@ public class ScoreManager {
 			}
 			if (piecesOnRow == board.rowLength()) {
 				score++;
-				deleteRow(board, y);
-				moveRowDown(board, y - 1);
+				moveRowsDown(board, y);
 				System.out.println("score: " + score);
 			}
 			piecesOnRow = 0;
 		}
 	}
 
-	
-	private void moveRowDown(Board board, int y) {
-		for (int x = board.rowLength() - 1; x >= 0; x--){
-			Piece piece = board.getPieceAt(x, y);
-			if (piece != null) {
-				board.setPieceAt(x, y, null);
-				board.setPieceAt(x, y + 1, piece);
+	private void moveRowsDown(Board board, int rowNumber) {
+		for (int y = rowNumber; y >= 0; y--) {
+			for (int x = board.rowLength() - 1; x >= 0; x--) {
+				Piece piece = board.getPieceAt(x, y);
+				if (piece != null) {
+					board.setPieceAt(x, y, null);
+					board.setPieceAt(x, y + 1, piece);
+				}
 			}
-		}
-	}
-
-	private void deleteRow(Board board, int y) {
-		for (int x = board.rowLength() - 1; x >= 0; x--) {
-			board.setPieceAt(x, y, null);
 		}
 	}
 
