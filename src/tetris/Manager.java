@@ -1,10 +1,5 @@
 package tetris;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-
 import ui.JFrameScreen.OnUserAction;
 
 public class Manager {
@@ -16,7 +11,6 @@ public class Manager {
 	private UiController printer;
 	private PieceMovement movement;
 	private ScoreManager score;
-
 
 
 	public Manager() {
@@ -38,6 +32,12 @@ public class Manager {
 				movement.moveLeft(board);
 
 			}
+
+			@Override
+			public void onUpArrow() {
+				System.out.println("up arrow clicked");
+				movement.rotate(board);
+			}
 		};
 		this.printer = new UiController(listener);
 		this.movement = new PieceMovement();
@@ -48,7 +48,7 @@ public class Manager {
 
 		generator.createBoard(board);
 		while (isRunning) {
-			ElementMovement element = board.generateElement();
+			Element element = board.generateElement();
 			element.configure(board);
 			while (element.isMoving()) {
 				printer.printBoard(board);
@@ -58,8 +58,7 @@ public class Manager {
 				}
 				score.raiseScore(board);
 				score.quickenGame();
-				boolean flag1 = board.isBoardFull();
-				if(flag1){
+				if(board.isBoardFull()){
 					endGame();
 				}
 			}

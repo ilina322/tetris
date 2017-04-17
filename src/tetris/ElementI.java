@@ -1,21 +1,18 @@
 package tetris;
 
-public class ElementI extends ElementMovement{
+public class ElementI extends Element {
 
-
-	
 	@Override
 	public void configure(Board board) {
-		createElement(board, 4, 0);
-		createElement(board, 4, 1);
-		createElement(board, 4, 2);
-		createElement(board, 4, 3);
+		createElementPart(board, 4, 0);
+		createElementPart(board, 4, 1);
+		createRotationCenter(board, 4, 2);
+		createElementPart(board, 4, 3);
 	}
 
 	@Override
-	public void rotate() {
-		// TODO Auto-generated method stub
+	public void rotate(Board board) {
 		
 	}
-	
+
 }

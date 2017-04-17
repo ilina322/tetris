@@ -76,6 +76,8 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 		void onRightArrow();
 
 		void onLeftArrow();
+
+		void onUpArrow();
 	}
 
 	@Override
@@ -86,6 +88,10 @@ public class JFrameScreen extends JFrame implements BoardScreen, KeyListener {
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 			listener.onRightArrow();
+			System.out.println(e.getKeyCode());
+		}
+		if(e.getKeyCode() == KeyEvent.VK_UP){
+			listener.onUpArrow();
 			System.out.println(e.getKeyCode());
 		}
 		

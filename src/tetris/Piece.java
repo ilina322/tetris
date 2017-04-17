@@ -2,7 +2,7 @@ package tetris;
 
 public class Piece {
 
-	private boolean isDeleteable = false;
+	private boolean isRotationCentre = false;
 	private boolean isPieceStill = false;
 	
 	public Piece(boolean isPieceStill) {
@@ -21,11 +21,11 @@ public class Piece {
 		this.isPieceStill = isPieceStill;
 	}
 
-	public boolean isDeleteable() {
-		return isDeleteable;
+	public boolean isRotationCentre() {
+		return isRotationCentre;
 	}
 
-	public void setDeleteable(boolean isDeleteable) {
-		this.isDeleteable = isDeleteable;
+	public void setRotationCentre(boolean isRotationCentre) {
+		this.isRotationCentre = isRotationCentre;
 	}
 }

@@ -1,7 +1,5 @@
 package tetris;
 
-import ui.BoardScreen;
-import ui.ConsoleScreen;
 import ui.JFrameScreen;
 import ui.JFrameScreen.OnUserAction;
 

@@ -41,6 +41,19 @@ public class PieceMovement {
 		}
 		return board;
 	}
+	
+	public Board rotate(Board board) {
+		for (int x = board.length() - 1; x >= 0; x--) {
+			for (int y = board.rowLength() - 1; y >= 0; y--) {
+				Piece piece = board.getPieceAt(x, y);
+				if (piece instanceof Piece && !piece.isPieceStill() && !piece.isRotationCentre()) {
+					//board.setPieceAt(x + 2, y - 1, piece);
+					board.setPieceAt(x, y, null);
+				}
+			}
+		}
+		return board;
+	}
 
 	private boolean isPieceBelowStill(int x, int y, Board board) {
 		if (board.isOnBoard(x, y + 1) && board.getPieceAt(x, y + 1) != null && board.getPieceAt(x, y) != null) {
@@ -58,12 +71,6 @@ public class PieceMovement {
 			}
 		}
 		return false;
-	}
-
-	private void stopPiece(int x, int y, Board board) {
-		if (isPieceBelowStill(x, y, board) || isPieceAtBoardEnd(x, y, board)) {
-			board.getPieceAt(x, y).setPieceStill(true);
-		}
 	}
 	
 	public boolean checkShouldStop(Board board){

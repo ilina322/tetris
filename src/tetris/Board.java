@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class Board {
 
-	private static final int BOARD_WIDTH = 20;
-	private static final int BOARD_HEIGHT = 20;
+	private static final int BOARD_WIDTH = 10;
+	private static final int BOARD_HEIGHT = 10;
 
-	private static Piece[][] board;
+	private Piece[][] board;
 
 	public static int getBoardWidth() {
 		return BOARD_WIDTH;
@@ -31,11 +31,11 @@ public class Board {
 		this.board = new Piece[BOARD_WIDTH][BOARD_HEIGHT];
 	}
 
-	public ElementMovement generateElement() {
+	public Element generateElement() {
 
 		Random rand = new Random();
 		int type = rand.nextInt(7);
-		List<ElementMovement> elementArray = new ArrayList<>();
+		List<Element> elementArray = new ArrayList<>();
 
 		elementArray.add(new ElementT());
 		elementArray.add(new ElementI());
@@ -50,16 +50,16 @@ public class Board {
 	}
 
 	public boolean isBoardFull() {
-		int count = 0;
-		for1: for (int y = BOARD_HEIGHT - 1; y >= 0; y--) {
-			for2: for (int x = BOARD_WIDTH - 1; x >= 0; x--) {
+		int piecesHeight = 1;
+		for (int y = BOARD_HEIGHT - 1; y >= 0; y--) {
+		inner: for (int x = BOARD_WIDTH - 1; x >= 0; x--) {
 				if (board[x][y] != null) {
-					count++;
-					break for2;
+					piecesHeight++;
+					break inner;
 				}
 			}
 		}
-		if (count == BOARD_HEIGHT - 1) {
+		if (piecesHeight == BOARD_HEIGHT) {
 			return true;
 		}
 		return false;
